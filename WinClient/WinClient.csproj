@@ -36,6 +36,7 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\ClientProxy\ClientProxy.csproj">
       <Project>{96956e7c-5799-491c-97f6-2dcb19cd2cbe}</Project>
       <Name>ClientProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fc8f8837-63c9-412a-92a5-c01b0a069d09}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\TransferObjects\TransferObjects.csproj">
       <Project>{1fe68446-2a05-48ea-95ef-bf766160f0a7}</Project>

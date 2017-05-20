@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using TransferObjects;
+using DataAccess;
+using System.Configuration;
 
 namespace WinClient
 {
@@ -35,18 +37,20 @@ namespace WinClient
 
             object result = task.Result;
 
-            if (rbWHO.Checked && cbEntity.SelectedItem == "Country") {
+            if (rbWHO.Checked && cbEntity.SelectedItem.ToString() == "Country")
+            {
 
                 WHO_GHOCountryDTO country = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<WHO_GHOCountryDTO>(result.ToString());
-
-                lblResult.Text = country.copyright;
+                
+                CountryDataAccess.AddCountry(country, ConfigurationManager.ConnectionStrings["oracle_conn"].ConnectionString);
             }
-            else if (rbHC.Checked && cbEntity.SelectedItem == "Grossary")
+            else if (rbHC.Checked && cbEntity.SelectedItem.ToString() == "Grossary")
             {
                 HC_GrossaryDTO index = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<HC_GrossaryDTO>(result.ToString());
 
-                lblResult.Text = index.glossary[0].id;
             }
+
+            lblResult.Text = "Finished Calling API and Stored Data in DB.";
         }
 
         private void Client_Load(object sender, EventArgs e)
