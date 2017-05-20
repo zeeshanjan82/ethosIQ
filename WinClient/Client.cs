@@ -48,6 +48,10 @@ namespace WinClient
             {
                 HC_GrossaryDTO index = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<HC_GrossaryDTO>(result.ToString());
 
+                foreach (HC_GrossaryItemDTO item in index.glossary) {
+                    GrossaryDataAccess.AddGrossary(item, ConfigurationManager.ConnectionStrings["oracle_conn"].ConnectionString);
+                }
+
             }
 
             lblResult.Text = "Finished Calling API and Stored Data in DB.";
