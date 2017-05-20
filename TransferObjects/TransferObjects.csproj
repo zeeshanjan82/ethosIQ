@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HC_GrossaryDTO.cs" />
+    <Compile Include="HC_GrossaryItemDTO.cs" />
     <Compile Include="WHO_GHOCountryAttributeDTO.cs" />
     <Compile Include="WHO_GHOCountryDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

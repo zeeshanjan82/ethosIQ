@@ -35,9 +35,44 @@ namespace WinClient
 
             object result = task.Result;
 
-            WHO_GHOCountryDTO country = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<WHO_GHOCountryDTO>(result.ToString());
+            if (rbWHO.Checked && cbEntity.SelectedItem == "Country") {
 
-            lblResult.Text = country.copyright;
+                WHO_GHOCountryDTO country = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<WHO_GHOCountryDTO>(result.ToString());
+
+                lblResult.Text = country.copyright;
+            }
+            else if (rbHC.Checked && cbEntity.SelectedItem == "Grossary")
+            {
+                HC_GrossaryDTO index = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<HC_GrossaryDTO>(result.ToString());
+
+                lblResult.Text = index.glossary[0].id;
+            }
+        }
+
+        private void Client_Load(object sender, EventArgs e)
+        {
+            if (rbWHO.Checked)
+            {
+                cbEntity.Items.Clear();
+                cbEntity.Items.Add("Country");
+            }
+            else {
+                cbEntity.Items.Clear();
+                cbEntity.Items.Add("Grossary");
+            }
+        }
+
+        private void rbHC_CheckedChanged(object sender, EventArgs e)
+        {
+
+            cbEntity.Items.Clear();
+            cbEntity.Items.Add("Grossary");
+        }
+
+        private void rbWHO_CheckedChanged(object sender, EventArgs e)
+        {
+            cbEntity.Items.Clear();
+            cbEntity.Items.Add("Country");
         }
     }
 }
